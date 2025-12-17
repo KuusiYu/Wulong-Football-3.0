@@ -3,25 +3,16 @@
   "builds": [
     {
       "src": "main.py",
-      "use": "@vercel/python",
-      "config": {
-        "runtime": "python3.13",
-        "wsgi": "main.app"
-      }
-    },
-    {
-      "src": "static/(.*)",
-      "use": "@vercel/static"
+      "use": "@vercel/python"
     }
   ],
   "routes": [
     {
-      "src": "/static/(.*)",
-      "dest": "/static/$1"
-    },
-    {
       "src": "/(.*)",
       "dest": "main.py"
     }
-  ]
+  ],
+  "env": {
+    "FLASK_ENV": "production"
+  }
 }
